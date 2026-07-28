@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圓益行 Yuan Yi Tea | 台灣茶包專家・商業用・家庭用</title>
+    
+    <!-- Google Fonts: 思源黑體 & 思源宋體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS 變數定義：日式文青 × 台灣茶文化配色 */
+        :root {
+            --bg-color: #F8F5EF;       /* 米白色 */
+            --primary-color: #6F8B5D;  /* 茶綠色 */
+            --primary-dark: #587049;   /* 深茶綠 */
+            --text-main: #4A3A2A;      /* 深咖啡色文字 */
+            --text-muted: #7A6A5A;     /* 柔和咖啡色 */
+            --accent-wood: #D8C3A5;    /* 淺木色 */
+            --card-bg: #FFFFFF;        /* 卡片白 */
+            --border-color: #E6E0D4;   /* 邊框色 */
+            --transition: all 0.3s ease;
+        }
+
+        /* 基礎重置與排版 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif-font {
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* 按鈕樣式 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 139, 93, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1.5px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* 導覽列 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(248, 245, 239, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(74, 58, 42, 0.05);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero 首頁 */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            background: linear-gradient(rgba(74, 58, 42, 0.45), rgba(74, 58, 42, 0.45)), url('https://i.meee.com.tw/erdHHHc.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFFFFF;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-btns .btn-outline {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        .hero-btns .btn-outline:hover {
+            background-color: #FFFFFF;
+            color: var(--text-main);
+        }
+
+        /* 通用區塊設定 */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* 品牌介紹 */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(74, 58, 42, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .service-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+
+        .service-list li i {
+            color: var(--primary-color);
+        }
+
+        /* 為什麼選擇圓益行 (四大特色) */
+        .features {
+            background-color: #F1ECE1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(74, 58, 42, 0.04);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(74, 58, 42, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* 商品分類 */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(74, 58, 42, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(74, 58, 42, 0.08);
+        }
+
+        .category-header {
+            background-color: var(--accent-wood);
+            padding: 1.5rem 2rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-header i {
+            font-size: 1.75rem;
+            color: var(--primary-dark);
+        }
+
+        .category-header h3 {
+            font-size: 1.35rem;
+        }
+
+        .category-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-tags span {
+            background-color: var(--bg-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* 商業客戶推薦 (情境展示) */
+        .scenarios {
+            background-color: #F1ECE1;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .scenario-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(74, 58, 42, 0.04);
+        }
+
+        .scenario-img {
+            height: 220px;
+            background-color: var(--accent-wood);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-dark);
+        }
+
+        .scenario-content {
+            padding: 2rem;
+        }
+
+        .scenario-content h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .scenario-content ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .scenario-content li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .scenario-content li i {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+        }
+
+        /* 熱門商品推薦 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(74, 58, 42, 0.04);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(74, 58, 42, 0.08);
+        }
+
+        .product-img {
+            width: 80px;
+            height: 80px;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--primary-color);
+        }
+
+        .product-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .product-card .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+
+        /* 合作流程 */
+        .process {
+            background-color: #F1ECE1;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .process-card {
+            background-color: var(--card-bg);
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(74, 58, 42, 0.04);
+            position: relative;
+        }
+
+        .process-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+        }
+
+        .process-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* 常見問題 FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(74, 58, 42, 0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* 聯絡我們 */
+        .contact {
+            background-color: var(--text-main);
+            color: #FFFFFF;
+        }
+
+        .contact .section-title h2,
+        .contact .section-title p {
+            color: #FFFFFF;
+        }
+
+        .contact .section-title p {
+            color: #D8C3A5;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-top: 0.2rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item p {
+            color: #C8B8A6;
+            font-size: 0.95rem;
+        }
+
+        .contact-line-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-line-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-line-box p {
+            color: #C8B8A6;
+            margin-bottom: 1.5rem;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #FFFFFF;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #3A2C1F;
+            color: #A89886;
+            text-align: center;
+            padding: 2.5rem 0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 響應式手機版 (RWD) */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 2rem 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .about-grid,
+            .categories-grid,
+            .scenarios-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .features-grid,
+            .products-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">圓益行 <span>Yuan Yi</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">品牌介紹</a></li>
+                    <li><a href="#features">三大特色</a></li>
+                    <li><a href="#categories">商品分類</a></li>
+                    <li><a href="#scenarios">商業專區</a></li>
+                    <li><a href="#products">熱門商品</a></li>
+                    <li><a href="#faq">常見問題</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.9rem; color: #fff;">立即詢價</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero 首頁 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="serif-font">圓益行・台灣茶包專家</h1>
+            <p>商業用・家庭用・沖泡方便・品質穩定</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> 立即詢價</a>
+                <a href="#categories" class="btn btn-outline"><i class="fas fa-mug-hot"></i> 查看產品</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品牌介紹 -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80" alt="高質感茶席與茶包">
+                </div>
+                <div class="about-text">
+                    <h3 class="serif-font">三十多年台灣茶葉經驗，提供最穩定的商業茶飲解決方案</h3>
+                    <p>圓益行致力於提供高品質茶包與沖調式飲品，精選台灣與世界優質茶葉，從原料挑選、包裝設計到品質管理，嚴格把關每個環節。</p>
+                    <h4 class="serif-font" style="margin-bottom: 1rem; font-size: 1.1rem;">我們服務：</h4>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> 手搖飲店</li>
+                        <li><i class="fas fa-check"></i> 早餐店</li>
+                        <li><i class="fas fa-check"></i> 餐廳</li>
+                        <li><i class="fas fa-check"></i> 辦公室</li>
+                        <li><i class="fas fa-check"></i> 公司行號</li>
+                        <li><i class="fas fa-check"></i> 家庭沖泡</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 為什麼選擇圓益行 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">為什麼選擇圓益行</h2>
+                <p>四大核心優勢，成就每一杯好茶</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                    <h4 class="serif-font">品質穩定</h4>
+                    <p>每批茶葉嚴格把關，風味自然甘醇，層次豐富。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                    <h4 class="serif-font">商業專用</h4>
+                    <p>茶湯穩定，適合大量沖泡，出杯效率高。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-coins"></i></div>
+                    <h4 class="serif-font">經濟實惠</h4>
+                    <p>高CP值批發價格，有效降低營業與採購成本。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+                    <h4 class="serif-font">快速出貨</h4>
+                    <p>台灣在地快速配送，供貨穩定不斷鏈。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品分類 -->
+    <section id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">商品分類</h2>
+                <p>多元規格滿足各類餐飲與日常需求</p>
+            </div>
+            <div class="categories-grid">
+                <!-- 分類 ① -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <i class="fas fa-box-open"></i>
+                        <h3 class="serif-font">茶包系列</h3>
+                    </div>
+                    <div class="category-body">
+                        <div class="category-tags">
+                            <span>大麥紅茶</span>
+                            <span>阿薩姆紅茶</span>
+                            <span>綠茶</span>
+                            <span>烏龍茶</span>
+                            <span>決明子茶</span>
+                            <span>蕎麥茶</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline">查看更多 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- 分類 ② -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <i class="fas fa-mug-hot"></i>
+                        <h3 class="serif-font">沖調式飲品</h3>
+                    </div>
+                    <div class="category-body">
+                        <div class="category-tags">
+                            <span>三合一奶茶</span>
+                            <span>三合一咖啡</span>
+                            <span>即沖飲品</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline">查看更多 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- 分類 ③ -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <i class="fas fa-store"></i>
+                        <h3 class="serif-font">商業用系列</h3>
+                    </div>
+                    <div class="category-body">
+                        <div class="category-tags">
+                            <span>手搖飲店</span>
+                            <span>早餐店</span>
+                            <span>餐廳</span>
+                            <span>咖啡店</span>
+                            <span>中央廚房</span>
+                            <span>大容量茶包</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline">查看更多 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- 分類 ④ -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <i class="fas fa-home"></i>
+                        <h3 class="serif-font">家庭系列</h3>
+                    </div>
+                    <div class="category-body">
+                        <div class="category-tags">
+                            <span>家庭號</span>
+                            <span>辦公室茶包</span>
+                            <span>露營隨身</span>
+                            <span>冷泡茶</span>
+                            <span>熱泡茶</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline">查看更多 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商業客戶推薦 (情境展示) -->
+    <section class="scenarios" id="scenarios">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">商業客戶推薦</h2>
+                <p>量身打造的茶飲解決方案</p>
+            </div>
+            <div class="scenarios-grid">
+                <div class="scenario-card">
+                    <div class="scenario-img">
+                        <i class="fas fa-glass-water"></i>
+                    </div>
+                    <div class="scenario-content">
+                        <h4 class="serif-font">手搖飲店</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 穩定茶湯</li>
+                            <li><i class="fas fa-check"></i> 降低成本</li>
+                            <li><i class="fas fa-check"></i> 快速出杯</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-img">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="scenario-content">
+                        <h4 class="serif-font">OL 辦公室</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 方便沖泡</li>
+                            <li><i class="fas fa-check"></i> 下午茶首選</li>
+                            <li><i class="fas fa-check"></i> 提神放鬆</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-img">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="scenario-content">
+                        <h4 class="serif-font">家庭主婦</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 天然健康</li>
+                            <li><i class="fas fa-check"></i> 全家共享</li>
+                            <li><i class="fas fa-check"></i> 冷熱皆宜</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 熱門商品 -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">熱門商品</h2>
+                <p>客戶回購率極高的精選茶款</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div>
+                        <div class="product-img"><i class="fas fa-leaf"></i></div>
+                        <h4 class="serif-font">大麥香紅茶</h4>
+                        <p>自然麥香與甘醇紅茶完美結合</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">立即詢價</a>
+                </div>
+                <div class="product-card">
+                    <div>
+                        <div class="product-img"><i class="fas fa-leaf"></i></div>
+                        <h4 class="serif-font">阿薩姆紅茶</h4>
+                        <p>濃郁茶香，奶茶最佳百搭基底</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">立即詢價</a>
+                </div>
+                <div class="product-card">
+                    <div>
+                        <div class="product-img"><i class="fas fa-leaf"></i></div>
+                        <h4 class="serif-font">金萱烏龍</h4>
+                        <p>清香甘甜，帶有淡淡奶香回甘</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">立即詢價</a>
+                </div>
+                <div class="product-card">
+                    <div>
+                        <div class="product-img"><i class="fas fa-leaf"></i></div>
+                        <h4 class="serif-font">決明子紅茶</h4>
+                        <p>古早味養生茶飲，圓潤順口</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">立即詢價</a>
+                </div>
+                <div class="product-card">
+                    <div>
+                        <div class="product-img"><i class="fas fa-leaf"></i></div>
+                        <h4 class="serif-font">茉莉綠茶</h4>
+                        <p>花香清新自然，冷泡熱泡皆宜</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">立即詢價</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作流程 -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">合作流程</h2>
+                <p>簡單五步驟，快速開啟合作</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">1</div>
+                    <h4 class="serif-font">聯絡我們</h4>
+                    <p>透過電話或Line提出茶飲需求</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">2</div>
+                    <h4 class="serif-font">提供需求</h4>
+                    <p>專業團隊為您評估店型與口味</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">3</div>
+                    <h4 class="serif-font">推薦商品</h4>
+                    <p>提供樣品試喝與商業報價</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">4</div>
+                    <h4 class="serif-font">快速出貨</h4>
+                    <p>確認訂單後全台快速配送</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">5</div>
+                    <h4 class="serif-font">持續合作</h4>
+                    <p>穩定供貨與長期售後支援</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常見問題 FAQ -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">常見問題</h2>
+                <p>解答您關於茶包批發與訂購的疑問</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>請問有提供商業試喝樣品嗎？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>有的！針對手搖飲店、早餐店及各大餐廳等商業客戶，我們皆有提供試喝樣品申請服務。歡迎透過官方 LINE 與我們聯繫索取。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>請問批發訂購有最低起訂量（MOQ）限制嗎？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>商業批發與家庭號包裝有不同的彈性訂購方案。一般商業茶包皆提供箱裝批發，詳細起訂量與量大優惠歡迎直接洽詢客服專員。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>茶葉保存期限與保存方式是什麼？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>未開封之茶包建議存放於陰涼乾燥處，避免陽光直射與潮濕環境。一般常溫保存期限可達 18 至 24 個月（詳細期限請參照外包裝標示）。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>是否可以客製化專屬配方或代工包裝？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>圓益行擁有豐富的茶葉調配經驗，提供商業客戶茶包代工與客製化拼配服務，歡迎連繫我們討論您的品牌需求。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡我們 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="serif-font">聯絡我們</h2>
+                <p>歡迎隨時與我們聯繫，獲取專屬報價與試喝樣品</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4 class="serif-font">營業據點</h4>
+                            <p>台北市內湖區文湖街6號2樓</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4 class="serif-font">聯絡電話</h4>
+                            <p>02-2798-8592 / 專人洽詢服務</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4 class="serif-font">電子信箱</h4>
+                            <p>service@yuanyi-tea.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4 class="serif-font">營業時間</h4>
+                            <p>週一至週五 09:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-line-box">
+                    <h3 class="serif-font">加入官方 LINE 立即詢價</h3>
+                    <p>掃描 QR Code 或點擊下方按鈕，由專人為您提供商業報價與茶樣服務</p>
+                    <div class="qr-placeholder">
+                        <i class="fab fa-line" style="font-size: 4rem; color: #06C755;"></i>
+                    </div>
+                    <a href="https://line.me" target="_blank" class="btn btn-primary" style="background-color: #06C755; width: 100%;">
+                        <i class="fab fa-line"></i> 點我加 LINE 洽詢
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="serif-font" style="font-size: 1.1rem; color: #D8C3A5; margin-bottom: 0.5rem;">圓益行 Yuan Yi Tea</p>
+            <p>Copyright &copy; 2026 圓益行 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript 互動功能 -->
+    <script>
+        // 手機版漢堡選單切換
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 點擊導覽連結後自動關閉手機選單
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // FAQ 手風琴展開/收合功能
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // 關閉其他展開項目
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // 切換當前項目
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
